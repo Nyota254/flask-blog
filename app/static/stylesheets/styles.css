@@ -1,0 +1,22 @@
+body{
+    background-color: blue;
+    color:white;
+}
+
+.panel{
+    color:black;
+    opacity: 0.7;
+}
+
+.landingspot {
+    background-image: url('../appphotos/landingpage.png');
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+    color:blue;
+    text-align: center;
+}
+
+.textmiddle {
+    padding-top: 200px;
+}

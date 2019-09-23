@@ -45,7 +45,7 @@ def comment(article_id):
 def profile(username):
     user = User.query.filter_by(username = username).first()
     userid = user.id
-    my_articles = Article.query.filter_by(users_id = userid).all()
+    my_articles = Article.query.filter_by(user_id = userid).all()
 
     if user is None:
         abort(404)
