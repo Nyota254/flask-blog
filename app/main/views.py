@@ -94,3 +94,14 @@ def update(article_id):
         form.category.data = current_article.category
         form.article.data = current_article.article
     return render_template('addarticle.html',title = 'update article',articleform = form)
+
+
+@main.route('/articlediscussion/<int:article_id>/delete',methods=['POST'])
+@login_required
+def delete(article_id):
+    current_article = Article.query.filter_by(id = article_id).first()
+    if current_article.user != current_user:
+        abort(403)
+    db.session.delete(current_article)
+    db.session.commit()
+    return redirect(url_for('.index'))
