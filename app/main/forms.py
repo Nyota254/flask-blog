@@ -10,7 +10,7 @@ class ArticleUploadForm(FlaskForm):
     submit = SubmitField('Add Article')
 
 class CommentsForm(FlaskForm):
-    comment = TextAreaField('comment on the post',validators=[Required()])
+    comment = TextAreaField('comment on the article',validators=[Required()])
     submit = SubmitField('Add Comment')
 
 class UpdateProfile(FlaskForm):
