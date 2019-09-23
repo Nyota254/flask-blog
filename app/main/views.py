@@ -9,7 +9,10 @@ from ..requests import getQuotes
 @main.route('/')
 def index():
     articles = Article.get_article()
-    quotes = getQuotes()
+    try:
+        quotes = getQuotes()
+    except Exception as e:
+        quotes = "quotes unavailable"
     title='Welcome to the article'
     return render_template('index.html',articles=articles,quotes = quotes)
 
