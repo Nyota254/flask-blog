@@ -2,7 +2,7 @@
 ####  This is a web app that allows writers to write articles and delete articles and for readers to comment on the articles,23-Sep-2019
 #### By **Kingecha Kevin Nyota**
 ## Link to live site
-You can view the site here ---> 
+You can view the site here ---> https://flask-blog254.herokuapp.com
 
 ## Description
 This is a blog site created using the python flask framework it is a platform to share the skills i have learnt so far on my programming journey.
