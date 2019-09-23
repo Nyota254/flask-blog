@@ -7,9 +7,9 @@ from ..models import Article,Comment,User
 
 @main.route('/')
 def index():
-    article = Article.get_article()
+    articles = Article.get_article()
     title='Welcome to the article'
-    return render_template('index.html',article=article)
+    return render_template('index.html',articles=articles)
 
 @main.route('/addarticle',methods = ['GET','POST'])
 @login_required
