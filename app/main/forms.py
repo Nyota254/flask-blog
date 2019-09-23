@@ -6,7 +6,7 @@ from ..models import Article,Comment
 
 class ArticleUploadForm(FlaskForm):
     article = TextAreaField('Article',validators=[Required()])
-    category = StringField('Category',validators=[Required()])
+    category = StringField('Title',validators=[Required()])
     submit = SubmitField('Add Article')
 
 class CommentsForm(FlaskForm):

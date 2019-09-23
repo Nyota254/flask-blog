@@ -76,4 +76,12 @@ class Comment(db.Model):
         comments = Comment.query.filter_by(article_id=article_id).all()
         return comments
 
+class Quotes:
+    def __init__(self,author,quote):
+        '''
+        Method to instanciate the quotes class
+        '''
+        self.author = author
+        self.quote = quote
+
     

@@ -1,15 +1,17 @@
 from . import main
-from flask import render_template,redirect,url_for,request
+from flask import render_template,redirect,url_for,request,abort
 from flask_login import login_required,current_user,login_user,logout_user
 from .forms import ArticleUploadForm,CommentsForm,UpdateProfile
 from .. import db,photos
-from ..models import Article,Comment,User
+from ..models import Article,Comment,User,  Quotes
+from ..requests import getQuotes
 
 @main.route('/')
 def index():
     articles = Article.get_article()
+    quotes = getQuotes()
     title='Welcome to the article'
-    return render_template('index.html',articles=articles)
+    return render_template('index.html',articles=articles,quotes = quotes)
 
 @main.route('/addarticle',methods = ['GET','POST'])
 @login_required
@@ -76,3 +78,19 @@ def update_pic(username):
         db.session.commit()
     return redirect(url_for('main.profile',username=username))
 
+@main.route('/articlediscussion/<int:article_id>/update',methods=['POST','GET'])
+@login_required
+def update(article_id):
+    current_article = Article.query.filter_by(id = article_id).first()
+    if current_article.user != current_user:
+        abort(403)
+    form = ArticleUploadForm()
+    if form.validate_on_submit():
+        current_article.article = form.article.data
+        current_article.category = form.category.data
+        db.session.commit()
+        return redirect('.comment',article_id = article_id)
+    elif request.method == 'GET':
+        form.category.data = current_article.category
+        form.article.data = current_article.article
+    return render_template('addarticle.html',title = 'update article',articleform = form)
