@@ -3,7 +3,7 @@ class Config:
     '''
     General configuration settings
     '''
-    pass
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
 
 class ProdConfig(Config):
     '''

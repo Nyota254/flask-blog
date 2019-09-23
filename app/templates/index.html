@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <h1>Welcome To The Pitch</h1>
+    <h1>Welcome To FlaskBlog</h1>
     <a href="{{url_for('main.add_article')}}" class="btn btn-primary">Write An Article</a>
     <hr>
     <div class="row">
@@ -13,7 +13,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ article.category }}</div>
                 <div class="panel-body">
-                <p>{{ article.article | truncate(40) }}</p>
+                <p>{{ article.article | truncate(200) }}</p>
                 <p><strong>by: {{ article.user.username }}</strong></p>
                 <a href="{{url_for('main.comment',article_id=article.id)}}" class="btn btn-primary">Readfull Article</a>
             </div>
